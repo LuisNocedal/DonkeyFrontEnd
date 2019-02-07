@@ -1,0 +1,31 @@
+<ion-header *ngIf="categoria" [style.background-color]="categoria.color">
+
+  <ion-navbar color="transparent">
+    <ion-title>Iniciar partida</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content class="content" padding *ngIf="categoria">
+
+  <ion-card>
+    <img src="{{categoria.imagen}}"/>
+    <ion-card-content>
+      <ion-card-title style="text-align:center">
+        {{categoria.nombre}}
+      </ion-card-title>
+    </ion-card-content>
+  </ion-card>
+  <br>
+  <br>
+  <br>
+  <br>
+  <p style="text-align: center">
+  <button ion-button icon-right [style.background-color]="categoria.color" id="comenzar" (click)="irPartida()">
+    Comenzar
+    <ion-icon name="md-play"></ion-icon>
+  </button>
+  </p>
+
+</ion-content>

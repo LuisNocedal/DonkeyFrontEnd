@@ -1,0 +1,51 @@
+<ion-header> 
+
+  <ion-navbar color="primary">
+    <ion-title>{{amigo.usuario}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <div *ngIf="!mensajes && datosCargados">
+    <h2 style="text-align: center">Aún has chateado con este usuario.</h2>
+    <p style="text-align: center">¡Mandale un saludo! <ion-icon name="contacts"></ion-icon></p>
+  </div>
+
+  <ion-list>
+    <ion-row *ngFor="let mensaje of mensajes">
+      <div>
+        <ul>
+          <li>
+            <p class="mensaje" 
+            [class.mensajeMio]='mensaje.enviado == "mio"'
+            [class.mensajeAmigo]='mensaje.enviado == "amigo"'>
+              {{mensaje.mensaje}}
+            </p>
+          </li>
+          <li>
+            <p class="hora"
+            [class.mensajeMio]='mensaje.enviado == "mio"'
+            [class.mensajeAmigo]='mensaje.enviado == "amigo"'>
+              {{mensaje.fecha|date:'hh:mm a'}}
+            </p>
+          </li>
+        </ul>
+      </div>
+    </ion-row>
+  </ion-list>
+</ion-content>
+<ion-footer>
+  <ion-row>
+    <ion-col>
+      <ion-item>
+        <ion-input type="text" placeholder="Escribe algún mensaje" [(ngModel)]="mensaje"></ion-input>
+      </ion-item>
+    </ion-col>
+    <ion-col col-3>
+      <button ion-button (click)="enviarMensaje()">Enviar</button>
+    </ion-col>
+  </ion-row>
+</ion-footer>

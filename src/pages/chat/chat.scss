@@ -1,0 +1,40 @@
+page-chat {
+
+    ion-row div{
+        width: 100%;
+    }
+
+    .mensaje{
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+        padding: 10px;
+        border-radius: 5px;
+        min-width: 150px;
+        font-size: 15px;
+    }
+
+    .mensajeMio{
+        float: right;
+    }
+
+    .mensajeAmigo{
+        float: left;
+    }
+
+    .hora{
+        margin: 0px;
+        padding: 0px;
+        font-size: 12px;
+    }
+
+    li{
+        margin: 0px;
+        padding: 0px;
+        list-style: none;
+        margin-left: 0px;
+        overflow: hidden;
+    }
+    ul {
+        margin: 0px;
+        padding: 0px;
+    }
+}

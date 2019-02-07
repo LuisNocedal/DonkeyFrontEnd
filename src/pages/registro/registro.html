@@ -1,0 +1,81 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>Registro</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-list>
+
+    <form [formGroup]="form">
+
+      <ion-thumbnail item-start>
+        <img *ngIf="!avatar" src="assets/imgs/default.jpg" (click)="avatares()">
+        <img *ngIf="avatar" src="{{avatar.imagen}}" (click)="avatares()">
+        <ion-icon name="create" (click)="avatares()"></ion-icon>
+      </ion-thumbnail>
+
+      <ion-item>
+        <ion-label floating>Nombre completo</ion-label>
+        <ion-input type="text" formControlName="nombre"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>Usuario</ion-label>
+        <ion-input type="text" formControlName="usuario"></ion-input>
+      </ion-item>
+      <br>
+
+      <ion-item style="max-width: 300px;">
+        <ion-label>¿Eres? (O te consideras...)</ion-label>
+        <ion-select formControlName="sexo" okText="Aceptar" cancelText="Cancelar">
+          <ion-option value="hombre">Hombre</ion-option>
+          <ion-option value="mujer">Mujer</ion-option>
+        </ion-select>
+      </ion-item>
+      
+      <br>
+      <br>
+
+      <ion-item>
+        <ion-label floating>Contraseña</ion-label>
+        <ion-input type="password" formControlName="password"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>Confirmar contraseña</ion-label>
+        <ion-input type="password" formControlName="confirmacion"></ion-input>
+      </ion-item>
+
+      <br>
+
+      <!--  <ion-item>
+        <ion-label>Carrera</ion-label>
+        <ion-select formControlName="carrera" okText="Aceptar" cancelText="Cancelar">
+          <ion-option value="TPQAPA">TPQAPA</ion-option>
+          <ion-option value="TPPQI">TPPQI</ion-option>
+          <ion-option value="TPSI">TPSI</ion-option>
+          <ion-option value="TPP">TPP</ion-option>
+          <ion-option value="TPMI">TPMI</ion-option>
+          <ion-option value="TPMF">TPMF</ion-option>
+        </ion-select>
+      </ion-item>-->
+
+      <!--<ion-item>
+        <ion-label floating>Codigo</ion-label>
+        <ion-input type="text" formControlName="codigo"></ion-input>
+      </ion-item>-->
+
+      <p style="text-align:center">
+        <button color="secondary" ion-button [disabled]="form.invalid" (click)="registrar()">Registrarme</button>
+      </p>
+
+    </form>
+  
+  </ion-list>
+
+</ion-content>

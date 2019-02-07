@@ -1,0 +1,44 @@
+<ion-header>
+  
+  <ion-navbar color="primary">
+    <ion-buttons left>
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>Marcadores</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-grid>
+    <ion-row class="cabecera">
+      <ion-col col-3><p>Avatar</p></ion-col>
+      <ion-col col-3><p>Usuario</p></ion-col>
+      <ion-col col-3><p>Puntos</p></ion-col>
+      <ion-col col-3><p>Lugar</p></ion-col>
+    </ion-row>
+    <ion-row 
+    *ngFor="let usuario of marcadorGeneral; let i = index"
+    [class.usuarioActual] = "usuario.usuarioActual == 1">
+      <ion-col col-3>
+        <img src="{{usuario.avatar}}">
+      </ion-col>
+      <ion-col col-3>
+        <!--<p ion-item class="item" no-lines>{{usuario.usuario}}</p>-->
+        <p *ngIf="resolucion < 500"><marquee behavior="scroll" direction="left" scrolldelay="300">{{usuario.usuario}}</marquee></p>
+        <p *ngIf="resolucion > 500" style="text-align: center">{{usuario.usuario}}</p>
+      </ion-col>
+      <ion-col col-3>
+        <p ion-item class="item" no-lines>{{usuario.puntos}}</p>
+      </ion-col>
+      <ion-col col-3>
+        <p ion-item class="item" no-lines>#{{i+1}}</p>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

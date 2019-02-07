@@ -1,0 +1,24 @@
+<ion-header *ngIf="carrera">
+
+  <ion-navbar color="primary">
+    <ion-title>Categorias de {{carrera.nombre}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <h2 style="text-align: center">Elige una categoria</h2>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col class="categoria" col-6 *ngFor="let categoria of categorias" 
+      (click)="irPantallaInicio(categoria)">
+        <img src="{{categoria.imagen}}">
+        <p>{{categoria.nombre}}</p>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

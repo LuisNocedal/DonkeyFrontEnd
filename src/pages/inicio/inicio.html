@@ -1,0 +1,44 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-buttons left>
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-item no-lines class="datosUsuario" *ngIf="datosUsuario">
+      <ion-avatar item-start>
+        <img src="{{datosUsuario.avatar}}">
+      </ion-avatar>
+      <h2>{{datosUsuario.usuario}}</h2>
+      <h2 item-end *ngIf="datosUsuario">
+        <strong>Nivel:</strong> {{datosUsuario.nivel}}
+      </h2>
+    </ion-item>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-row>
+    <ion-col class="categoria" col-6 (click)="partidaPVP()">
+      <img src="assets/imgs/PVP.png">
+      <p>PvP</p>
+    </ion-col>
+  </ion-row>
+
+  <h2 style="text-align: center">Elige una carrera</h2>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col class="categoria" col-6 *ngFor="let carrera of carreras" 
+      (click)="irCarrera(carrera)">
+        <img src="{{carrera.imagen}}">
+        <p>{{carrera.nombre}}</p>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

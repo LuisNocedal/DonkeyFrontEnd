@@ -1,0 +1,51 @@
+page-marcadores {
+
+    @media screen and (min-width: 600px){
+
+        ion-col img{
+            height: 70px;
+            margin:10px auto;
+	        display:block;
+        }
+
+        ion-grid{
+            max-width: 800px;
+        }
+
+    }
+
+    ion-grid{
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    }
+
+    .cabecera{
+        background-color: black;
+        color: white;
+        font-size: 20px;
+        text-align: center;
+        font-weight: bold;
+        border-radius: 5px;
+    }
+
+    .usuarios{
+        font-size: 20px;
+        text-align: center;
+    }
+
+    .item{
+        padding: 0px;
+        margin: 0px;
+        text-align: center;
+        font-size: 20px;
+    }
+
+    .usuarioActual{
+        background-color: #C8F1FB;
+        border-radius: 5px;
+    }
+
+    .usuarioActual .item{
+        background-color: #C8F1FB;
+    }
+
+}

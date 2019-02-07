@@ -1,0 +1,42 @@
+page-registro {
+
+  @media screen and (min-width: 600px){
+    ion-thumbnail img{
+        cursor: pointer;
+    }
+    ion-thumbnail ion-icon{
+      cursor: pointer;
+  }
+    
+  }
+
+  .no-scroll .scroll-content {
+    overflow: hidden;
+  }
+
+  ion-thumbnail{
+    position: relative;
+  }
+
+  ion-thumbnail img{
+    border: 2px solid #424242;
+    border-radius: 2px;
+  }
+
+  ion-thumbnail ion-icon{
+    position: absolute;
+    font-size: 25px;
+    z-index: 99;
+    bottom: 2px;
+    left: 120px;
+    background-color: #424242;
+    color:white;
+    padding: 5px;
+  }
+
+  ion-thumbnail img{
+    width: 150px;
+    height: 150px;
+  }
+
+}

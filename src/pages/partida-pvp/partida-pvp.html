@@ -1,0 +1,94 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>Partida PVP</ion-title>
+    
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding *ngIf="preguntaActual">
+  
+  <div id="divPregunta">
+    <h2 style="text-align: center">{{segundos}}</h2>
+    <ion-card id="pregunta">
+      <ion-card-content>
+        <p>{{preguntaActual.pregunta}}</p>
+      </ion-card-content>
+    </ion-card>
+    <br>
+    <img id="imagenPregunta" *ngIf="preguntaActual.imagen" src="{{preguntaActual.imagen}}">
+    <div id="divOpcion" *ngFor="let opcion of preguntaActual.opciones">
+      <ion-card id="opcion"
+      [class.eleccion] = 'preguntaActual.eleccion == opcion && !mostrarResultados'
+      [class.correcta] = 'preguntaActual.respuesta == opcion && mostrarResultados'
+      [class.incorrecta] = 'preguntaActual.respuesta != opcion && mostrarResultados'
+      (click)="seleccionarOpcion(opcion)">
+        <p>
+          {{opcion}}
+        </p>
+      </ion-card>
+      <ion-avatar class="avatarRespuesta"
+      *ngIf="mostrarResultados && 
+      preguntaActual.eleccion == opcion">
+        <img src="{{datosUsuario.avatar}}">
+      </ion-avatar>
+      <ion-avatar class="avatarRespuesta"
+      *ngIf="mostrarResultados &&
+      respuestasUsuarios.contrincante[ronda-1].opcion == opcion">
+        <img src="{{datosContrincante.avatar}}">
+      </ion-avatar>
+    </div>
+  </div>
+
+</ion-content>
+<ion-footer>
+
+  <ion-grid *ngIf="datosUsuario && respuestasUsuarios">
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-avatar item-start>
+            <img src="{{datosUsuario.avatar}}">
+          </ion-avatar>
+          <h2>{{datosUsuario.usuario}}</h2>
+        </ion-item>
+      </ion-col>
+      <ion-col col-1 *ngFor="let circulo of circulosUsuario">
+        <div class="divRonda" 
+        [class.contestacion] = "respuestasUsuarios.usuario[circulo].contestacion 
+        && !respuestasUsuarios.usuario[circulo].respuesta"
+        [class.correcta] = "respuestasUsuarios.usuario[circulo].respuesta
+        && respuestasUsuarios.usuario[circulo].respuesta == 'c'"
+        [class.incorrecta] = "respuestasUsuarios.usuario[circulo].respuesta
+        && respuestasUsuarios.usuario[circulo].respuesta == 'i'">
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid *ngIf="datosContrincante && respuestasUsuarios">
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-avatar item-start>
+            <img src="{{datosContrincante.avatar}}">
+          </ion-avatar>
+          <h2>{{datosContrincante.usuario}}</h2>
+        </ion-item>
+      </ion-col>
+      <ion-col col-1 *ngFor="let circulo of circulosContrincante">
+        <div class="divRonda" 
+        [class.contestacion] = "respuestasUsuarios.contrincante[circulo].contestacion 
+        && !respuestasUsuarios.contrincante[circulo].respuesta"
+        [class.correcta] = "respuestasUsuarios.contrincante[circulo].respuesta
+        && respuestasUsuarios.contrincante[circulo].respuesta == 'c'"
+        [class.incorrecta] = "respuestasUsuarios.contrincante[circulo].respuesta
+        && respuestasUsuarios.contrincante[circulo].respuesta == 'i'">
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-footer>

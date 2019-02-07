@@ -1,0 +1,38 @@
+<ion-header *ngIf="categoria">
+
+  <ion-navbar color="{{categoria.nombreColor}}">
+    <ion-title>Contestadas: {{contestadas}}</ion-title>
+    <ion-title>Puntos: {{puntos}}</ion-title>
+    <ion-buttons right>
+      <button ion-button color="dark" (click)="partidaTerminada()">
+        Salir
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <h2 style="text-align: center">{{segundos}}</h2>
+
+  <ion-card id="pregunta">
+    <ion-card-content>
+      <p>{{preguntaActual.pregunta}}</p>
+    </ion-card-content>
+  </ion-card>
+  <br>
+  <img *ngIf="preguntaActual.imagen" src="{{preguntaActual.imagen}}">
+
+  <ion-card id="opcion" *ngFor="let opcion of opciones" (click)="comprobarRespuesta(opcion)">
+    <p>
+      {{opcion}}
+    </p>
+  </ion-card>
+
+</ion-content>
+<!--<ion-footer>
+  <ion-toolbar>
+    <button ion-button (click)="usarComodin()">Comodin tiempo</button>
+  </ion-toolbar>
+</ion-footer>-->

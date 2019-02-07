@@ -1,0 +1,59 @@
+<ion-content class="content">
+
+  <!--<img class="huellas1" src="assets/imgs/Huellas.png">-->
+
+  <div class="divLogin" *ngIf="resolucion > 500">
+    <ion-card>
+        <!--<img class="huellas" src="assets/imgs/Huellas.png">-->
+        <ion-card-content>
+          <form [formGroup] = "form">
+            <img src="assets/imgs/Donkey.png" class="logo">
+            <ion-list>
+              <ion-item>
+                <ion-label floating>Usuario</ion-label>
+                <ion-input type="text" formControlName="usuario"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label floating>Contraseña</ion-label>
+                <ion-input type="password" formControlName="password"></ion-input>
+              </ion-item>
+            </ion-list>
+            <div class="botones">
+              <button ion-button [disabled]="form.invalid" (click)="ingresar()">Ingresar</button>
+              <br>
+            </div>
+          </form>
+          <div class="botones">
+            <button ion-button clear (click)="registro()">Registrarme</button>
+          </div>
+      </ion-card-content>
+    </ion-card> 
+  </div>
+
+  <div *ngIf="resolucion < 500">
+
+    <form [formGroup] = "form">
+      <img src="assets/imgs/Huellas.png" class="huellitas">
+      <img src="assets/imgs/Donkey.png" class="logo">
+      <ion-list>
+        <ion-item>
+          <ion-label floating>Usuario</ion-label>
+          <ion-input type="text" formControlName="usuario"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>Contraseña</ion-label>
+          <ion-input type="password" formControlName="password"></ion-input>
+        </ion-item>
+      </ion-list>
+      <div class="botones">
+        <button ion-button [disabled]="form.invalid" (click)="ingresar()">Ingresar</button>
+        <br>
+      </div>
+    </form>
+    <div class="botones">
+      <button ion-button clear (click)="registro()">Registrarme</button>
+    </div>
+
+  </div>
+
+</ion-content>

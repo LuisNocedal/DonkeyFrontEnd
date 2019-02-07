@@ -1,0 +1,27 @@
+page-login {
+
+  .content{
+    //background-color: rgb(240, 240, 240);
+  }
+
+  .huellitas{
+    position: absolute;
+    max-width: 120px;
+    top: 0px;
+    left: 0px;
+  }
+
+  .logo{
+    position: relative;
+    top: 50px;
+  }
+
+  .botones{
+    text-align: center;
+  }
+
+  .no-scroll .scroll-content {
+    overflow: hidden;
+  }
+
+}

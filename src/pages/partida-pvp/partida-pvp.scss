@@ -1,0 +1,73 @@
+page-partida-pvp {
+    .divRonda{
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        border: 2px solid black;
+        margin-top: 15px;
+    }
+
+    #divPregunta{
+        margin-bottom: 200px;
+        margin-top: 50px;
+    }
+
+    ion-footer{
+        background-color: white;
+    }
+
+    #opcion{
+        padding: 3px;
+        margin-top: 20px;
+        border-radius: 50px;
+    }
+
+    #opcion p{
+        font-size: 20px;
+        text-align: center;
+    }
+    
+    #pregunta p{
+        font-size: 20px;
+    }
+    
+    #imagenPregunta{
+        min-height: 150px;
+        margin: 0px auto;
+        display:block;
+    }
+
+    .eleccion{
+        background-color: dodgerblue;
+    }
+
+    .contestacion{
+        background-color: dodgerblue;
+    }
+
+    .correcta{
+        background-color: rgb(35, 150, 35);
+    }
+
+    .incorrecta{
+        background-color: rgb(247, 63, 63);
+    }
+
+    .avatarRespuesta{
+        max-width: 35px;
+        position: absolute;
+        top: 0px;
+        left: -10px;
+    }
+
+    #divOpcion{
+        position: relative;
+    }
+    
+    .content{
+        background-image: url("../assets/imgs/fondo.jpg");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 100%
+    }
+}

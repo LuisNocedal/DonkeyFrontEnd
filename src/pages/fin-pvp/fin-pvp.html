@@ -1,0 +1,17 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>Fin partida</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <h2 style="text-align: center" 
+  [class.ganaste] = 'mensaje == "Ganaste"'
+  [class.perdiste] = 'mensaje == "Perdiste"'
+  [class.empate] = 'mensaje == "Empate"'
+  >{{mensaje}}</h2>
+  <button ion-button color="secondary" (click)="continuar()">Continuar</button>
+</ion-content>

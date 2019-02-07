@@ -1,0 +1,52 @@
+<ion-menu [content]="content">
+  <ion-header>
+    <ion-toolbar color="primary">
+      <div id="divAvatar">
+        <ion-avatar>
+          <img src="{{avatar}}">
+        </ion-avatar>
+      </div>
+      <ion-title style="text-align:center">{{usuario}}</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-list>
+      <button ion-item menuClose (click)="inicio()">
+        Inicio
+        <ion-icon name="home" item-end></ion-icon>
+      </button>
+      <!--<button ion-item menuClose (click)="inicioPvp()">
+        Juega con un amigo
+        <ion-icon name="game-controller-a" item-end></ion-icon>
+      </button>-->
+      <button ion-item menuClose (click)="cuenta()">
+        Cuenta
+        <ion-icon name="person" item-end></ion-icon>
+      </button>
+      <button ion-item menuClose (click)="amigos()">
+        Amigos
+        <ion-icon name="contacts" item-end></ion-icon>
+      </button>
+      <button ion-item menuClose (click)="marcadores()">
+        Marcadores
+        <ion-icon name="clipboard" item-end></ion-icon>
+      </button>
+      <!--<button ion-item menuClose (click)="historialExamenes()">
+        Historial de examenes
+        <ion-icon name="create" item-end></ion-icon>
+      </button>-->
+      <!--<button ion-item menuClose (click)="qr()">BuscarQr</button>-->
+      <button ion-item (click)="salir()">
+        Salir
+        <ion-icon name="exit" item-end></ion-icon>
+      </button>
+    </ion-list>
+  </ion-content>
+  <ion-footer>
+    <ion-toolbar>
+      <label style="float: right">v {{version}}</label>
+    </ion-toolbar>
+  </ion-footer>
+</ion-menu>
+
+<ion-nav id="nav" #content [root]="rootPage"></ion-nav>

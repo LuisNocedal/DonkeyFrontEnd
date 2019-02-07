@@ -1,0 +1,100 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-buttons left>
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>Amigos</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-searchbar (ionInput)="buscarUsuario($event)" placeholder="Buscar usuario"></ion-searchbar>
+  <ion-list *ngIf="usuarios" class="lista">
+    <ion-item *ngFor="let usuario of usuarios">
+      <ion-avatar item-start>
+        <img src="{{usuario.avatar}}">
+      </ion-avatar>
+      <h2>{{usuario.usuario}}</h2>
+      <p>{{usuario.nombre}}</p>
+      <button *ngIf="usuario.pendiente == 0 && usuario.amigo != 1" 
+      ion-button item-end (click)="solicitudAmistad(usuario.idUsuarioDonkey)">
+        Enviar solicitud
+      </button>
+      <button *ngIf="usuario.pendiente == 1 && usuario.amigo != 1" color="secondary" 
+      ion-button item-end (click)="solicitudAmistad(usuario.idUsuarioDonkey,true)">
+        Cancelar solicitud
+      </button>
+      <h2 item-end *ngIf="usuario.amigo == 1" style="color:dodgerblue">Amigo</h2>
+    </ion-item>
+  </ion-list>
+
+  <div padding>
+    <ion-segment [(ngModel)]="seccion">
+      <ion-segment-button value="amigos">
+        Mis amigos
+      </ion-segment-button>
+      <ion-segment-button value="solicitudes">
+        Solicitudes
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+
+  <div [ngSwitch]="seccion">
+
+    <div *ngSwitchCase="'amigos'">
+
+      <div *ngIf="!amigos && datosCargados">
+        <h2 style="text-align: center">Aún no tienes amigos.</h2>
+        <p style="text-align: center">¡Vamos, buscalos y juega con ellos! <ion-icon name="contacts"></ion-icon></p>
+      </div>
+
+      <ion-list>
+        <ion-item *ngFor="let amigo of amigos" (click)="irChat(amigo)">
+          <ion-avatar item-start>
+            <img src="{{amigo.avatar}}">
+          </ion-avatar>
+          <h2><strong>{{amigo.usuario}}</strong></h2>
+          <p>{{amigo.nombre}}</p>
+          <p item-end><strong>N.{{amigo.nivel}}</strong></p>
+          <ion-badge item-end *ngIf="amigo.mensajesNoLeidos > 0">{{amigo.mensajesNoLeidos}}</ion-badge>
+        </ion-item>
+      </ion-list>
+
+    </div>
+  
+    <div *ngSwitchCase="'solicitudes'">
+
+      <div *ngIf="!solicitudes && datosCargados">
+        <h2 style="text-align: center">Todo tranquilo.</h2>
+        <p style="text-align: center">No hay solicitudes por el momento <ion-icon name="contacts"></ion-icon></p>
+      </div>
+
+      <ion-list>
+        <ion-item *ngFor="let solicitud of solicitudes">
+          <ion-avatar item-start>
+            <img src="{{solicitud.avatar}}">
+          </ion-avatar>
+          <marquee behavior="alternate" direction="left" 
+          scrolldelay="400" *ngIf="solicitud.usuario.length>9&&resolucion<600">
+            <h2>{{solicitud.usuario}}</h2>
+          </marquee>
+          <h2 *ngIf="solicitud.usuario.length<=9||resolucion>=600">{{solicitud.usuario}}</h2>
+          <button ion-button 
+          item-end (click)="responderSolicitud(solicitud.idSolicitud,'Aceptada')">
+            Aceptar
+          </button>
+          <button ion-button color = "secondary" 
+          item-end (click)="responderSolicitud(solicitud.idSolicitud,'Rechazada')">
+            Rechazar
+          </button>
+        </ion-item>
+      </ion-list>
+    </div>
+  </div>
+
+</ion-content>

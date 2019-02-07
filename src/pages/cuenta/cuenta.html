@@ -1,0 +1,39 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-buttons left>
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>Cuenta</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-thumbnail item-start>
+    <img *ngIf="avatar" src="{{avatar.imagen}}" (click)="avatares()">
+    <ion-icon name="create" (click)="avatares()"></ion-icon>
+  </ion-thumbnail>
+
+  <form [formGroup]="formCuenta">
+    <ion-item>
+      <ion-label floating>Usuario</ion-label>
+      <ion-input type="text" formControlName="usuario"></ion-input>
+    </ion-item>
+    <br>
+    <ion-item>
+      <ion-label floating>Contraseña</ion-label>
+      <ion-input type="password" [(ngModel)]="password" [ngModelOptions]="{standalone: true}"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Confirmar contraseña</ion-label>
+      <ion-input type="password" [(ngModel)]="confirmarPassword" [ngModelOptions]="{standalone: true}"></ion-input>
+    </ion-item>
+
+    <button ion-button [disabled]="formCuenta.invalid" (click)="guardarCambios()">Guardar cambios</button>
+  </form>
+</ion-content>

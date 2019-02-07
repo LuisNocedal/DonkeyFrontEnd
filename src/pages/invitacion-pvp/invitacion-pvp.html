@@ -1,0 +1,20 @@
+<ion-content>
+
+  <ion-item *ngIf="datosInvitacion">
+    <ion-avatar item-start>
+      <img src="{{datosInvitacion.avatar}}">
+    </ion-avatar>
+    <marquee direction="left" scrolldelay="150">
+      <p>{{datosInvitacion.mensaje}}</p>
+    </marquee>
+    <button ion-button color="primary" icon-only clear
+    item-end (click)="aceptar()">
+      <ion-icon name="checkmark"></ion-icon>
+    </button>
+    <button ion-button color = "secondary" icon-only clear
+    item-end (click)="rechazar()">
+      <ion-icon name="close"></ion-icon>
+    </button>
+  </ion-item>
+
+</ion-content>
